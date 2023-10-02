@@ -1,0 +1,16 @@
+---
+import { response } from '../data/api';
+---
+
+<h1>test</h1>
+<ul>
+    {response.map((res: {
+[x: string]: unknown; title: string; 
+}) => (
+        <li>
+            <p>{res.title}</p>
+            <span>{res.id}</span>
+        </li>
+    ))}
+</ul>
+

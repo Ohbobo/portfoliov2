@@ -1,0 +1,19 @@
+---
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<html lang="fr">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Ceci est un portfolio</title>
+	</head>
+	<body class="max-w-screen-2xl mx-auto">
+		<Navbar />
+        <slot />
+        <Footer />
+	</body>
+</html>

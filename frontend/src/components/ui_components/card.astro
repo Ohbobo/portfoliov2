@@ -1,0 +1,24 @@
+---
+const cardContent = [
+    {
+        title: "ecece",
+        content: [
+            "deeed",
+            "dededded",
+            "dzdzdz",
+        ]
+    }
+]
+---
+<div>
+    {cardContent.map(card => (
+        <article class="border">
+            <h3>{card.title}</h3>
+                <div>
+                    {card.content.map(text => (
+                        <p>{text}</p>
+                    ))}
+                </div>
+        </article>
+    ))}
+</div>
