@@ -6,35 +6,35 @@ import { IAboutCardsRepository } from 'src/about/core/repository/projects.reposi
 
 @Injectable()
 export class InMemoryAboutCards implements IAboutCardsRepository {
-    private readonly projects: IAboutCard[] = [];
+    private readonly aboutCards: IAboutCard[] = [];
 
     async getAllCard(): Promise<IAboutCard[]> {
-        return this.projects;
+        return this.aboutCards;
     }
 
     async findById(id: string): Promise<IAboutCard> {
-        return this.projects.find(p => p.id === id);
+        return this.aboutCards.find(card => card.id === id);
     }
 
     async createCard(createCardDto: CreateAboutCard): Promise<IAboutCard> {
         const newCard = {id: "1", ...createCardDto};
-        this.projects.push(newCard);
+        this.aboutCards.push(newCard);
         return newCard;
     }
 
     async updateCard(project: IAboutCard): Promise<void> {
-        const index = this.projects.findIndex(p => p.id === project.id);
+        const index = this.aboutCards.findIndex(card => card.id === project.id);
         if(index === -1) {
             return undefined;
         }
-        this.projects[index] = project;
+        this.aboutCards[index] = project;
     }
 
     async deleteCard(id: string): Promise<void> {
-        const index = this.projects.findIndex(p => p.id === id);
+        const index = this.aboutCards.findIndex(card => card.id === id);
 
         if(index !== -1) {
-            this.projects.splice(index, 1);
+            this.aboutCards.splice(index, 1);
         }
     }
 }
