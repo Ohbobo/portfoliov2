@@ -1,4 +1,4 @@
-import { Body, Delete, Get, Param, Put } from '@nestjs/common';
+import { Body, Delete, Get, NotFoundException, Param, Put } from '@nestjs/common';
 import { Post } from '@nestjs/common';
 import { Controller } from '@nestjs/common';
 import { ProjectsService } from 'src/projects/core/application/projects.service';

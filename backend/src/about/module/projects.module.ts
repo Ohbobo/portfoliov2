@@ -7,8 +7,8 @@ import { IAboutCardsRepository } from "../core/repository/projects.repository";
 @Module({
     controllers: [AboutController],
     providers: [
-        { provide: AboutCardsService, useFactory: (repository: IAboutCardsRepository) => new AboutCardsService(repository), inject: ['PROJECT_REPOSITORY'] },
-        { provide: 'PROJECT_REPOSITORY', useClass: InMemoryAboutCards }
+        { provide: AboutCardsService, useFactory: (repository: IAboutCardsRepository) => new AboutCardsService(repository), inject: ['ABOUT_REPOSITORY'] },
+        { provide: 'ABOUT_REPOSITORY', useClass: InMemoryAboutCards }
     ]
 })
 
