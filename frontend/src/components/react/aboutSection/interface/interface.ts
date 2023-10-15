@@ -3,6 +3,7 @@ export interface IAboutEntities {
     title: string;
     technologies: [
         {
+          id: string,
           name: string,
           icon: string,
         }

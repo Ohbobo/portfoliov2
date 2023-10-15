@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import { ApiService } from '../apiService/api';
+import { ApiService } from '../../application/api.service';
 
-export function useDataFetching<T>(url: string): {
+export function UseDataFetching<T>(url: string): {
   data: T | null;
   loading: boolean;
   error: string | null;

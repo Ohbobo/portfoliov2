@@ -3,6 +3,7 @@ export interface IAbout {
     title: string;
     technologies: [
         {
+          id: string,
           name: string,
           icon: string,
         }
@@ -10,6 +11,11 @@ export interface IAbout {
 }
 
 export interface IProject {
-    id: string; 
+    id?: string; 
     title: string;
+    description: string;
+    tags: {
+      id: string,
+      name: string,
+    }[];
 }

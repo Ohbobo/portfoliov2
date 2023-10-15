@@ -13,4 +13,8 @@ export class ApiService<T> {
         throw new Error(`Erreur lors de la récupération des données: ${error}`);
       }
     }
+
+    async create(url: string) {
+      
+    }
 }

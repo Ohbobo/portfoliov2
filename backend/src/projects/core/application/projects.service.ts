@@ -1,6 +1,7 @@
 import { IProjectsRepository } from "../repository/projects.repository";
 import { IProjectCard } from "../interface/projects.interface";
 import { ProjectDto } from "../dto/projects.dto";
+import { v4 as uuidv4 } from 'uuid';
 
 export class ProjectsService {
     constructor(private readonly projectsRepository: IProjectsRepository) {}
@@ -15,7 +16,7 @@ export class ProjectsService {
 
     async createProject(createProjectDto: ProjectDto): Promise<IProjectCard> {
         const newProject : IProjectCard = {
-            id: "1",
+            id: uuidv4(),
             ...createProjectDto,
         }
         const createProject = await this.projectsRepository.createProject(newProject)

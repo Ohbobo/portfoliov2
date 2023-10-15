@@ -1,14 +1,18 @@
 ---
 import Layout from "../layout/layout.astro";
+import Navbar from "../components/astro/navbar.astro";
 import Header from "../components/astro/header.astro";
 import About from "../components/astro/about.astro";
 import Projects from "../components/astro/projects.astro";
+import Footer from "../components/astro/footer.astro";
 ---
 
 <Layout>
+	<Navbar />
 	<main>
 		<Header />
 		<About />
 		<Projects />
 	</main>
+	<Footer />
 </Layout>

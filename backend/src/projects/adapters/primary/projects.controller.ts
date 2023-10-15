@@ -1,4 +1,4 @@
-import { Body, Delete, Get, NotFoundException, Param, Put } from '@nestjs/common';
+import { Body, Delete, Get, NotFoundException, Param, Put, UploadedFile, UseInterceptors, Req, BadRequestException } from '@nestjs/common';
 import { Post } from '@nestjs/common';
 import { Controller } from '@nestjs/common';
 import { ProjectsService } from 'src/projects/core/application/projects.service';
@@ -26,9 +26,16 @@ export class ProjectController{
     }
 
     @Post()
-    async createProject(@Body() createProjectDto: ProjectDto): Promise<IProjectCard> {
-        return this.projectsService.createProject(createProjectDto);
+        async createProject(@Body() createProjectDto: ProjectDto): Promise<IProjectCard> {
+            try {
+                const newProject = await this.projectsService.createProject(createProjectDto);
+                console.log(newProject)
+                return newProject;
+            } catch (error) {
+                throw new BadRequestException("Erreur lors du redimensionnement de l'image");
+            }
     }
+
 
     @Put(':id')
     async updateProject(@Param('id') id: string, @Body() updateDto: ProjectDto): Promise<void> {

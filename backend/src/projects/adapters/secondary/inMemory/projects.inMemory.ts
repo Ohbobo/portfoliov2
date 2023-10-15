@@ -16,7 +16,7 @@ export class InMemoryProjects implements IProjectsRepository {
     }
     
     async createProject(projectDto: ProjectDto): Promise<IProjectCard> {
-        const newProject = {id: "1", ...projectDto};
+        const newProject = {id: "", ...projectDto};
         this.projects.push(newProject);
         return newProject;
     }

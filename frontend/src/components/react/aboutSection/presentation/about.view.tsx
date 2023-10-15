@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { AboutViewModel } from './about.viewModel'
+import Card from '../../displayAllCards/presentation/ui/AboutCard';
 
 export default function AboutView() {
     const { data, loading, error, fetchData } = AboutViewModel();
@@ -21,7 +22,7 @@ export default function AboutView() {
     return (
       <div>
         {data?.map(card => (
-          <p key={card.id}>{card.title}</p>
+          <Card key={card.id} title={card.title} technologies={card.technologies}/>
         ))}
       </div>
     )
