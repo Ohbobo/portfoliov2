@@ -1,8 +1,8 @@
 import React from 'react'
-import { API_ROUTES } from '../../data/ApiRoutes';
-import { Button } from '../ui/Button';
-import { UseDataFetching } from '../../displayAllCards/presentation/viewModel/UseDataFetching';
-import type { IAbout } from '../../displayAllCards/interface/interface';
+import { API_ROUTES } from '../../../../data/ApiRoutes';
+import { Button } from '../../../../../dashboard/ui/Button';
+import { UseDataFetching } from '../../../customHook/UseDataFetching';
+import type { IAbout } from '../../../../domain/models/interface';
 export const AboutSection = () => {
   const { data, loading, error, refreshData } = UseDataFetching<IAbout[]>(API_ROUTES.GET_ABOUT)
   

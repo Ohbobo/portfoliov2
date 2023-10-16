@@ -1,9 +1,9 @@
 import React from 'react'
-import { Button } from '../ui/Button'
-import { API_ROUTES } from '../../data/ApiRoutes'
-import { UseDataFetching } from '../../displayAllCards/presentation/viewModel/UseDataFetching'
-import type { IProject } from '../../displayAllCards/interface/interface'
-import { Tag } from '../ui/Tag'
+import { Button } from '../../../../../dashboard/ui/Button'
+import { API_ROUTES } from '../../../../data/ApiRoutes'
+import { UseDataFetching } from '../../../customHook/UseDataFetching'
+import type { IProject } from '../../../../domain/models/interface'
+import { Tag } from '../../../../../dashboard/ui/Tag'
 
 export const ProjectSection = () => {
   const { data, loading, error, refreshData } = UseDataFetching<IProject[]>(API_ROUTES.GET_PROJECTS)

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useState } from 'react';
-import { API_ROUTES } from '../../data/ApiRoutes';
+import { API_ROUTES } from '../../displayAndCrudAboutAndProjects/data/ApiRoutes';
 
 export default function AdminForm() {
     const [email, setEmail] = useState('');

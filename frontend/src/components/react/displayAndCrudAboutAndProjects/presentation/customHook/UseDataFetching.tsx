@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { ApiService } from '../../../data/ApiServices';
+import { ApiService } from '../../data/ApiServices';
 
 export function UseDataFetching<T>(url: string): {
   data: T | null;

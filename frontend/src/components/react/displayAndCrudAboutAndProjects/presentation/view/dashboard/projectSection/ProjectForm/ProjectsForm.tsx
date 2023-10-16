@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { ApiService } from '../../../data/ApiServices';
-import { API_ROUTES } from '../../../data/ApiRoutes';
-import type { IProject } from '../../../displayAllCards/interface/interface';
+import { ApiService } from '../../../../../data/ApiServices';
+import { API_ROUTES } from '../../../../../data/ApiRoutes';
+import type { IProject } from '../../../../../domain/models/interface';
 
 interface Tag {
   id: string

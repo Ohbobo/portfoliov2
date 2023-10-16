@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { AboutViewModel } from './about.viewModel'
-import Card from '../../displayAllCards/presentation/ui/AboutCard';
+import Card from '../../displayAndCrudAboutAndProjects/presentation/view/landingPage/ui/AboutCard';
 
 export default function AboutView() {
     const { data, loading, error, fetchData } = AboutViewModel();

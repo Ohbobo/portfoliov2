@@ -1,9 +1,7 @@
 import React from 'react'
 import { API_ROUTES } from '../../../data/ApiRoutes'
 import { UseDataFetching } from '../viewModel/UseDataFetching'
-import ProjectCard from '../ui/ProjectCard'
-import type { IProject } from '../../interface/interface'
-
+import type { IProject } from '../../../../domain/models/interface'
 
 export default function ProjectCards() {
     const { data, loading, error } = UseDataFetching<IProject[]>(API_ROUTES.GET_ABOUT)

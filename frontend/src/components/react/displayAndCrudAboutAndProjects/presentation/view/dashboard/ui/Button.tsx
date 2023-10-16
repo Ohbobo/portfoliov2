@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react';
 import { Modal } from './Modal/Modal';
-import { ProjectsForm } from '../projectSection/ProjectForm/ProjectsForm';
+import { ProjectsForm } from '../../displayAndCrudAboutAndProjects/presentation/view/dashboard/projectSection/ProjectForm/ProjectsForm';
 
 type Props = {
     text: string
