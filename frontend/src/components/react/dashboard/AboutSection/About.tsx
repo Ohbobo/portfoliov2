@@ -4,7 +4,7 @@ import { Button } from '../ui/Button';
 import { UseDataFetching } from '../../displayAllCards/presentation/viewModel/UseDataFetching';
 import type { IAbout } from '../../displayAllCards/interface/interface';
 export const AboutSection = () => {
-  const { data, loading, error } = UseDataFetching<IAbout[]>(API_ROUTES.GET_ABOUT)
+  const { data, loading, error, refreshData } = UseDataFetching<IAbout[]>(API_ROUTES.GET_ABOUT)
   
   if (loading) {
     return (
@@ -29,8 +29,9 @@ export const AboutSection = () => {
     <section>
       <div className="flex items-center justify-between">
         <h2 className='font-bold text-2xl text-gray-700'>Mes skills</h2>
-        <Button text='Ajouter un projet' />
+        <Button text='Ajouter un projet' refreshData={refreshData}/>
       </div>
+      <p>Liste des icons: <a href="https://icones.js.org/">Ici</a></p>
       <div>
         {data?.map(item => (
           <p key={item.id}>{item.title}</p>

@@ -8,7 +8,7 @@ interface Tag {
   name: string;
 }
 
-export const ProjectsForm = () => {
+export const ProjectsForm = ({ refreshData }: {refreshData: () => void}) => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [tags, setTags] = useState<string[]>(['']);
@@ -28,6 +28,7 @@ export const ProjectsForm = () => {
 
     try {
       await apiService.create(API_ROUTES.GET_PROJECTS, newProject);
+      refreshData();
     } catch (error) {
       console.log(error);
     }
@@ -49,8 +50,9 @@ export const ProjectsForm = () => {
         type="text"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
-        placeholder="Title"
+        placeholder="Titre"
         className="block w-full px-4 py-2 mb-4 border rounded-md"
+        required
       />
       <textarea
         value={description}
@@ -59,28 +61,29 @@ export const ProjectsForm = () => {
         className="block w-full px-4 py-2 mb-4 border rounded-md"
       ></textarea>
       {tags.map((tag, index) => (
-        <div key={index}>
+        <div key={index} className='flex gap-2'>
           <input
             type="text"
             value={tag}
             onChange={(e) => handleTagChange(index, e.target.value)}
             placeholder="Tag"
             className="block w-full px-4 py-2 mb-4 border rounded-md"
+            required
           />
+          <button
+            type="button"
+            onClick={handleAddTag}
+            className="inline-block rounded border border-indigo-600 bg-indigo-600 px-4 mb-4 text-sm font-medium text-white hover:bg-transparent hover:text-indigo-600 focus:outline-none focus:ring active:text-indigo-500">
+            +
+          </button>
         </div>
       ))}
-      <button
-        type="button"
-        onClick={handleAddTag}
-        className="block w-full px-4 py-2 mb-4 text-white bg-blue-500 rounded-md"
-      >
-        +
-      </button>
+
       <button
         type="submit"
-        className="block w-full px-4 py-2 text-white bg-green-500 rounded-md"
+        className="inline-block rounded border border-indigo-600 px-12 py-3 text-sm font-medium text-indigo-600 hover:bg-indigo-600 hover:text-white focus:outline-none focus:ring active:bg-indigo-500"
       >
-        Create Project
+        Ajouter
       </button>
     </form>
   );

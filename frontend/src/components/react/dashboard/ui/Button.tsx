@@ -5,8 +5,9 @@ import { ProjectsForm } from '../projectSection/ProjectForm/ProjectsForm';
 
 type Props = {
     text: string
+    refreshData: () => void
 }
-export const Button = ({ text }: Props) => {
+export const Button = ({ text, refreshData }: Props) => {
     const [showModal, setShowModal] = useState(false);
 
     const handleShowModal = () => {
@@ -23,7 +24,7 @@ export const Button = ({ text }: Props) => {
           <Modal show={showModal} handleClose={handleCloseModal}>
             <div className="text-center">
               <p>Formulaire d'ajout</p>
-              <ProjectsForm />
+              <ProjectsForm refreshData={refreshData}/>
             </div>
           </Modal>
         </div>
