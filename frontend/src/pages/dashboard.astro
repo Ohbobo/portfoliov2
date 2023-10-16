@@ -1,7 +1,9 @@
 ---
 import { DashboardTest } from "../components/react/dashboard/dashboard";
-import Layout from "../layout/layout.astro";
+import DashboardLayout from "../layout/dashboardLayout.astro";
 ---
-<Layout>
-    <DashboardTest client:only/>
-</Layout>
+<DashboardLayout>
+    <main>
+        <DashboardTest client:only/>
+    </main>
+</DashboardLayout>

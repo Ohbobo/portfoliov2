@@ -1,14 +1,15 @@
 import React from 'react'
-import { API_ROUTES } from '../../../localData/apiRoutes';
-import { UseDataFetching } from '../displayAllCards/presentation/viewModel/UseDataFetching';
-import type { IAbout } from '../displayAllCards/interface/interface';
-export const About = () => {
+import { API_ROUTES } from '../../data/ApiRoutes';
+import { Button } from '../ui/Button';
+import { UseDataFetching } from '../../displayAllCards/presentation/viewModel/UseDataFetching';
+import type { IAbout } from '../../displayAllCards/interface/interface';
+export const AboutSection = () => {
   const { data, loading, error } = UseDataFetching<IAbout[]>(API_ROUTES.GET_ABOUT)
   
   if (loading) {
     return (
       <section>
-      <h2>Mes skills</h2>
+      <h2 className='font-bold text-2xl text-gray-700'>Mes skills</h2>
       <p className='text-slate-300 font-semibold'>Chargement en cours...</p>
       </section>
     ) 
@@ -18,7 +19,7 @@ export const About = () => {
     const errorMessage = error.toString();
     return (
       <section>
-        <h2>Mes skills</h2>
+        <h2 className='font-bold text-2xl text-gray-700'>Mes skills</h2>
         <p className='text-slate-300 font-semibold'>Une erreur s'est produite : {errorMessage}</p>;
       </section>
     )
@@ -26,9 +27,9 @@ export const About = () => {
 
   return (
     <section>
-      <div>
-        <h2>Mes skills</h2>
-        <button>Ajouter</button>
+      <div className="flex items-center justify-between">
+        <h2 className='font-bold text-2xl text-gray-700'>Mes skills</h2>
+        <Button text='Ajouter un projet' />
       </div>
       <div>
         {data?.map(item => (

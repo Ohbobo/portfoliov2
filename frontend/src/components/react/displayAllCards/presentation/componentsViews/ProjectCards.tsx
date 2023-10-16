@@ -1,5 +1,5 @@
 import React from 'react'
-import { API_ROUTES } from '../../../../../localData/apiRoutes'
+import { API_ROUTES } from '../../../data/ApiRoutes'
 import { UseDataFetching } from '../viewModel/UseDataFetching'
 import ProjectCard from '../ui/ProjectCard'
 import type { IProject } from '../../interface/interface'

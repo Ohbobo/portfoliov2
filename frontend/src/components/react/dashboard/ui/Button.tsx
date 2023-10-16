@@ -19,7 +19,7 @@ export const Button = ({ text }: Props) => {
 
     return (
         <div className="m-4">
-          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={handleShowModal}>{text}</button>
+          <button className="bg-teal-600 hover:bg-teal-700 text-white font-medium py-2 px-4 rounded" onClick={handleShowModal}>{text}</button>
           <Modal show={showModal} handleClose={handleCloseModal}>
             <div className="text-center">
               <p>Formulaire d'ajout</p>

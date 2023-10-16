@@ -1,11 +1,11 @@
 ---
-import Layout from "../layout/layout.astro";
+import LoginLayout from "../layout/loginLayout.astro";
 import AdminForm from "../components/react/admin/presentation/AdminForm";
 ---
 
-<Layout>
-    <main>
+<LoginLayout>
+    <main class="w-full h-full flex justify-center items-center">
         <AdminForm client:only/>
     </main>
-</Layout>
+</LoginLayout>
 

@@ -1,5 +1,5 @@
 import type { IAbout } from '../../interface/interface';
-import { API_ROUTES } from '../../../../../localData/apiRoutes';
+import { API_ROUTES } from '../../../data/ApiRoutes';
 import { UseDataFetching } from '../viewModel/UseDataFetching';
 import AboutCard from '../ui/AboutCard';
 

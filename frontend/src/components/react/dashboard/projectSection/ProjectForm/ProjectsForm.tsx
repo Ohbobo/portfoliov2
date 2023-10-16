@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { API_ROUTES } from '../../../../../localData/apiRoutes';
-import { ApiAdminService } from '../apiService';
+import { ApiService } from '../../../data/ApiServices';
+import { API_ROUTES } from '../../../data/ApiRoutes';
 import type { IProject } from '../../../displayAllCards/interface/interface';
 
 interface Tag {
@@ -13,7 +13,7 @@ export const ProjectsForm = () => {
   const [description, setDescription] = useState('');
   const [tags, setTags] = useState<string[]>(['']);
 
-  const apiService = new ApiAdminService<IProject>();
+  const apiService = new ApiService<IProject>();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

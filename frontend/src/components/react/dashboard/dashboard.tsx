@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import { Navigation } from './ui/navigation/Navigation';
+import { AboutSection } from './AboutSection/About';
 import { ProjectSection } from './projectSection/Projects';
 
 export const DashboardTest = () => {
@@ -31,6 +32,7 @@ export const DashboardTest = () => {
   return (
     <div>
         <Navigation />
+        <AboutSection />
         <ProjectSection />
         <button onClick={handleLogout}>Deconnexion</button>
     </div>
