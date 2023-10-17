@@ -1,32 +1,95 @@
 ---
 import { headerButtons } from "../../localData/localdata";
-import { Icon } from 'astro-icon'
+import { Icon } from 'astro-icon';
 ---
+<style>
+  .lines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  margin: auto;
+  width: 90vw;
+}
 
-<section class="bg-gray-900 text-white">
-    <div
-      class="mx-auto max-w-screen-xl px-4 py-32 lg:flex lg:h-screen lg:items-center"
-    >
-      <div class="mx-auto max-w-3xl text-center">
-        <h1 class="bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 bg-clip-text text-3xl font-extrabold text-transparent sm:text-5xl">
-          Understand User Flow.  
-          <span class="sm:block"> Increase Conversion. </span>
-        </h1>
-        <p class="mx-auto mt-4 max-w-xl sm:text-xl/relaxed">
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt illo
-          tenetur fuga ducimus numquam ea!
-        </p>
-  
-        <div class="mt-8 flex flex-wrap justify-center gap-4">
-          {headerButtons.map(btn => (
-            <a
-                class={btn.style}
-                href={btn.path}>
-                <Icon class="w-8" name={btn.icon}/>
-                {btn.title}
-            </a>
-          ))}
-        </div>
+.line {
+  position: absolute;
+  width: 1px;
+  height: 100%;
+  top: 0;
+  left: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+}
+
+.line::after {
+  content: '';
+  display: block;
+  position: absolute;
+  height: 15vh;
+  width: 100%;
+  top: -50%;
+  left: 0;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #ffffff 75%, #ffffff 100%);
+  animation: drop 7s 0s infinite;
+  animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(0.4, 0.26, 0, 0.97);
+}
+
+.line:nth-child(1) {
+  margin-left: -25%;
+}
+
+.line:nth-child(3) {
+  margin-left: 25%;
+}
+
+@keyframes drop {
+  0% {
+    top: -50%;
+  }
+  100% {
+    top: 110%;
+  }
+}
+
+</style>
+
+<header class="bg-gray-900 text-white relative overflow-hidden">
+  <div class="mx-auto max-w-screen-xl px-4 py-32 lg:flex lg:h-screen lg:items-center relative z-10">
+    <div class="mx-auto max-w-3xl text-center">
+      <h1 class="bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 bg-clip-text text-3xl font-extrabold text-transparent sm:text-5xl">
+        Understand User Flow.  
+        <span class="sm:block"> Increase Conversion. </span>
+      </h1>
+      <p class="mx-auto mt-4 max-w-xl sm:text-xl/relaxed">
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt illo
+        tenetur fuga ducimus numquam ea!
+      </p>
+
+      <div class="mt-8 flex flex-wrap justify-center gap-4">
+        {headerButtons.map(btn => (
+          <a
+          class={btn.style}
+            href={btn.path}
+          >
+            <Icon className="w-8" name={btn.icon} />
+            {btn.title}
+          </a>
+        ))}
       </div>
     </div>
-  </section>
+  </div>
+  <div class="lines absolute top-0 left-0 right-0 bottom-0 m-auto w-90vw h-screen">
+    <div class="line absolute w-1 h-screen top-0 left-1/2 bg-white overflow-hidden">
+      <div class="line-animation" />
+    </div>
+    <div class="line absolute w-1 h-screen top-0 left-1/4 bg-white overflow-hidden">
+      <div class="line-animation" />
+    </div>
+    <div class="line absolute w-1 h-screen top-0 right-1/4 bg-white overflow-hidden">
+      <div class="line-animation" />
+    </div>
+  </div>
+</header>
