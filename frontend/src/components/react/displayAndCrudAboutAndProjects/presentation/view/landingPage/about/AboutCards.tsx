@@ -1,6 +1,6 @@
-import type { IAbout } from '../../interface/interface';
-import { API_ROUTES } from '../../../data/ApiRoutes';
-import { UseDataFetching } from '../viewModel/UseDataFetching';
+import type { IAbout } from '../../../../domain/models/interface';
+import { API_ROUTES } from '../../../../data/ApiRoutes';
+import { UseDataFetching } from '../../../customHook/UseDataFetching';
 import AboutCard from '../ui/AboutCard';
 
 export default function AboutCards() {
@@ -16,7 +16,7 @@ export default function AboutCards() {
   }
 
   return (
-    <div>
+    <div className='flex gap-2'>
       {data?.map(card => (
         <AboutCard key={card.id} title={card.title} technologies={card.technologies}/>
       ))}

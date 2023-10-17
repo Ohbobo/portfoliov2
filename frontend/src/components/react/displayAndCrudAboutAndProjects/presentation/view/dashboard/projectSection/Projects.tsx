@@ -1,9 +1,9 @@
 import React from 'react'
-import { Button } from '../../../../../dashboard/ui/Button'
+import { Button } from '../ui/Button'
 import { API_ROUTES } from '../../../../data/ApiRoutes'
 import { UseDataFetching } from '../../../customHook/UseDataFetching'
 import type { IProject } from '../../../../domain/models/interface'
-import { Tag } from '../../../../../dashboard/ui/Tag'
+import { Tag } from '../ui/Tag'
 
 export const ProjectSection = () => {
   const { data, loading, error, refreshData } = UseDataFetching<IProject[]>(API_ROUTES.GET_PROJECTS)
@@ -39,8 +39,13 @@ export const ProjectSection = () => {
           <div key={item.id} className="w-2/6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
             <div className="p-5">
                 <h3 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{item.title}</h3>
-                <p>{item.description}</p>
-                <span className="inline-flex overflow-hidden rounded-md border bg-white shadow-sm">
+                <p className='my-2'>{item.description}</p>
+                <div className='flex gap-2'>
+                  {item.tags.map(tag => (
+                    <Tag key={tag.id} tag={tag.name} />
+                  ))}
+                </div>
+                <span className="inline-flex mt-2 overflow-hidden rounded-md border bg-white shadow-sm">
                   <button
                     className="inline-block border-e p-3 text-gray-700 hover:bg-gray-50 focus:relative"
                     title="Edit Product"

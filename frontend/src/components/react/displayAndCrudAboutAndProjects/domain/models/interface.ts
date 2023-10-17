@@ -1,13 +1,13 @@
 export interface IAbout {
-    id: string; 
+    id?: string; 
     title: string;
-    technologies: [
+    technologies: 
         {
           id: string,
           name: string,
           icon: string,
-        }
-      ]
+        }[]
+      
 }
 
 export interface IProject {

@@ -1,9 +1,10 @@
-import { Body, Delete, Get, NotFoundException, Param, Put, UploadedFile, UseInterceptors, Req, BadRequestException } from '@nestjs/common';
+import { Body, Delete, Get, NotFoundException, Param, Put, UploadedFile, UseInterceptors, Req, BadRequestException, UseGuards } from '@nestjs/common';
 import { Post } from '@nestjs/common';
 import { Controller } from '@nestjs/common';
 import { ProjectsService } from 'src/projects/core/application/projects.service';
 import { ProjectDto } from 'src/projects/core/dto/projects.dto';
 import { IProjectCard } from 'src/projects/core/interface/projects.interface';
+import { AuthGuard } from 'src/admin/adapters/secondary/middleware/authGuard/Auth.guard';
 
 @Controller('projects')
 export class ProjectController{
@@ -26,6 +27,7 @@ export class ProjectController{
     }
 
     @Post()
+    @UseGuards(AuthGuard)
         async createProject(@Body() createProjectDto: ProjectDto): Promise<IProjectCard> {
             try {
                 const newProject = await this.projectsService.createProject(createProjectDto);
@@ -38,11 +40,13 @@ export class ProjectController{
 
 
     @Put(':id')
+    @UseGuards(AuthGuard)
     async updateProject(@Param('id') id: string, @Body() updateDto: ProjectDto): Promise<void> {
         await this.projectsService.updateProject(id, updateDto)
     }
 
     @Delete(':id')
+    @UseGuards(AuthGuard)
     async deleteProject(@Param('id') id: string): Promise<void> {
         await this.projectsService.deleteProject(id);
     }

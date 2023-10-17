@@ -14,12 +14,13 @@ export class ApiService<T> {
     }
   }
 
-  async create(url: string, data: T) {
+  async create(url: string, data: T, token: string) {
     try {
         const response = await fetch(url, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
             },
             body: JSON.stringify(data),
         });

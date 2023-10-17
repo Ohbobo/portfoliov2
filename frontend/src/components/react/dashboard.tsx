@@ -1,8 +1,8 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
-import { Navigation } from './ui/navigation/Navigation';
-import { AboutSection } from '../displayAndCrudAboutAndProjects/presentation/view/dashboard/aboutSection/About';
-import { ProjectSection } from '../displayAndCrudAboutAndProjects/presentation/view/dashboard/projectSection/Projects';
+import { Navigation } from './displayAndCrudAboutAndProjects/presentation/view/dashboard/ui/navigation/Navigation';
+import { AboutSection } from './displayAndCrudAboutAndProjects/presentation/view/dashboard/aboutSection/About';
+import { ProjectSection } from './displayAndCrudAboutAndProjects/presentation/view/dashboard/projectSection/Projects';
 
 export const DashboardTest = () => {
     const [login, setLogin] = useState(!!sessionStorage.getItem('token'));

@@ -13,6 +13,8 @@ export const ProjectsForm = ({ refreshData }: {refreshData: () => void}) => {
   const [description, setDescription] = useState('');
   const [tags, setTags] = useState<string[]>(['']);
 
+  const token = sessionStorage.getItem('token');
+
   const apiService = new ApiService<IProject>();
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -27,8 +29,13 @@ export const ProjectsForm = ({ refreshData }: {refreshData: () => void}) => {
     };
 
     try {
-      await apiService.create(API_ROUTES.GET_PROJECTS, newProject);
-      refreshData();
+      if(token){
+        await apiService.create(API_ROUTES.GET_PROJECTS, newProject, token);
+        refreshData();
+      }
+      else {
+        console.log("Erreur, vous ne pouvez pas faire cela");
+      }
     } catch (error) {
       console.log(error);
     }

@@ -1,8 +1,9 @@
 ---
-import AboutCards from "../react/displayAndCrudAboutAndProjects/presentation/view/landingPage/components/AboutCards";
+import AboutCards from "../react/displayAndCrudAboutAndProjects/presentation/view/landingPage/about/AboutCards";
 ---
 
-<section id="about">
-    <h2 class="text-slate-300 font-semibold">A propos</h2>
+<section id="about" class="flex flex-col gap-2">
+    <h2 class="text-slate-300 font-semibold text-3xl">A propos</h2>
+    <p class="text-slate-300">Toutes mes technologies principales</p>
     <AboutCards client:load/>
 </section>
