@@ -1,5 +1,5 @@
 export interface IAbout {
-    id?: string; 
+    _id?: string; 
     title: string;
     technologies: 
         {
@@ -11,7 +11,7 @@ export interface IAbout {
 }
 
 export interface IProject {
-    id?: string; 
+    _id?: string; 
     title: string;
     description: string;
     tags: {

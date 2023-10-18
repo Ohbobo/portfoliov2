@@ -35,7 +35,7 @@ export const AboutSection = () => {
       <p>Liste des icons: <a href="https://icones.js.org/">Ici</a></p>
       <div>
       {data?.map(item => (
-          <div key={item.id} className="w-2/6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+          <div key={item._id} className="w-2/6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
             <div className="p-5">
                 <h3 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{item.title}</h3>
                 <ul>

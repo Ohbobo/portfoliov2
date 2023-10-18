@@ -18,7 +18,7 @@ export default function AboutCards() {
   return (
     <div className='flex gap-2'>
       {data?.map(card => (
-        <AboutCard key={card.id} title={card.title} technologies={card.technologies}/>
+        <AboutCard key={card._id} title={card.title} technologies={card.technologies}/>
       ))}
     </div>
   )

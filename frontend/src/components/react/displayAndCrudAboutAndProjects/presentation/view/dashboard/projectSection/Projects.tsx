@@ -78,7 +78,7 @@ export const ProjectSection = () => {
 
       <div className='flex justify-between items-center gap-4'>
         {data?.map(item => (
-          <div key={item.id} className="w-2/6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+          <div key={item._id} className="w-2/6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
             <div className="p-5">
                 <h3 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{item.title}</h3>
                 <p className='my-2'>{item.description}</p>
@@ -91,7 +91,7 @@ export const ProjectSection = () => {
                   <button
                     className="inline-block border-e p-3 text-gray-700 hover:bg-gray-50 focus:relative"
                     title="Edit Product"
-                    onClick={() => handleEditClick(item.id)}
+                    onClick={() => handleEditClick(item._id)}
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -112,7 +112,7 @@ export const ProjectSection = () => {
                   <button
                     className="inline-block p-3 text-gray-700 hover:bg-gray-50 focus:relative"
                     title="Delete Product"
-                    onClick={() => handleDelete(item.id)}
+                    onClick={() => handleDelete(item._id)}
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"

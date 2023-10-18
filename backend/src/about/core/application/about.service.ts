@@ -1,6 +1,6 @@
-import { IAboutCard } from "../interface/projects.inteface";
-import { CreateAboutCard, UpdateAboutCardDto } from "../dto/projects.dto";
-import { IAboutCardsRepository } from "../repository/projects.repository";
+import { IAboutCard } from "../interface/about.inteface";
+import { CreateAboutCard, UpdateAboutCardDto } from "../dto/about.dto";
+import { IAboutCardsRepository } from "../repository/about.repository";
 
 export class AboutCardsService {
     constructor(private readonly aboutCardsRepository: IAboutCardsRepository) {}
@@ -9,9 +9,13 @@ export class AboutCardsService {
         return this.aboutCardsRepository.getAllCard();
     }
 
+    async getOne(id: string): Promise<IAboutCard> {
+        return this.aboutCardsRepository.findById(id)
+    }
+
     async createCard(createCardDto: CreateAboutCard): Promise<IAboutCard> {
         const newCard: IAboutCard = {
-            id: "1",
+            _id: "1",
             ...createCardDto
         }
         const createCard = await this.aboutCardsRepository.createCard(newCard);

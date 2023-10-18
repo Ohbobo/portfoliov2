@@ -16,7 +16,7 @@ export class ProjectsService {
 
     async createProject(createProjectDto: ProjectDto): Promise<IProjectCard> {
         const newProject : IProjectCard = {
-            id: uuidv4(),
+            _id: uuidv4(),
             ...createProjectDto,
         }
         const createProject = await this.projectsRepository.createProject(newProject)

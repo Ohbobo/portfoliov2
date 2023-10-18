@@ -1,9 +1,9 @@
 import { Body, Delete, Get, Param, Put, UseGuards } from '@nestjs/common';
 import { Post } from '@nestjs/common';
 import { Controller } from '@nestjs/common';
-import { AboutCardsService } from 'src/about/core/application/projects.service';
-import { CreateAboutCard, UpdateAboutCardDto } from 'src/about/core/dto/projects.dto';
-import { IAboutCard } from 'src/about/core/interface/projects.inteface';
+import { AboutCardsService } from 'src/about/core/application/about.service';
+import { CreateAboutCard, UpdateAboutCardDto } from 'src/about/core/dto/about.dto';
+import { IAboutCard } from 'src/about/core/interface/about.inteface';
 import { AuthGuard } from 'src/admin/adapters/secondary/middleware/authGuard/Auth.guard';
 
 @Controller('about')

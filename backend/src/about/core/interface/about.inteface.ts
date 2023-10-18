@@ -1,5 +1,5 @@
 export interface IAboutCard {
-    id: string;
+    _id: string;
     title: string;
     technologies: Technology[];
 }
