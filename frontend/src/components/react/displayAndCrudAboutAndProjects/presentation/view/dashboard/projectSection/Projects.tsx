@@ -1,12 +1,54 @@
 import React from 'react'
+import { useState } from 'react';
 import { Button } from '../ui/Button'
 import { API_ROUTES } from '../../../../data/ApiRoutes'
 import { UseDataFetching } from '../../../customHook/UseDataFetching'
 import type { IProject } from '../../../../domain/models/interface'
 import { Tag } from '../ui/Tag'
+import { ProjectsUpdateForm } from './ProjectForm/ProjectsUpdateForm';
+import { ApiService } from '../../../../data/ApiServices';
 
 export const ProjectSection = () => {
-  const { data, loading, error, refreshData } = UseDataFetching<IProject[]>(API_ROUTES.GET_PROJECTS)
+  const { data, loading, error, refreshData } = UseDataFetching<IProject[]>(API_ROUTES.GET_PROJECTS);
+  const [selectedProject, setSelectedProject] = useState<IProject | null>(null);
+
+  const [showModal, setShowModal] = useState(false);
+
+  const apiService = new ApiService<IProject>();
+  
+
+  const handleEditClick = async (id: string | undefined) => {
+    if(id) {
+      try {
+        const response = await fetch(`${API_ROUTES.GET_PROJECTS}/${id}`);
+        const projectData = await response.json();
+        console.log(projectData);
+        setSelectedProject(projectData)
+        setShowModal(true);
+        refreshData();
+      } catch (error) {
+        console.error('Une erreur s\'est produite :', error);
+      }
+    } else {
+      console.error("L'ID du projet est indéfini");
+    }
+  };
+
+  const handleDelete = async (id: string | undefined) => {
+    const token = sessionStorage.getItem('token');
+    
+    if (id && token) {
+      try {
+        await apiService.delete(`${API_ROUTES.GET_PROJECTS}/${id}`, token);
+        refreshData();
+      } catch (error) {
+        console.error("Une erreur s'est produite lors de la suppression :", error);
+      }
+    } else {
+      console.error("L'ID du projet est indéfini ou le jeton d'authentification est manquant.");
+    }
+  };
+  
 
   if (loading) {
     return (
@@ -49,6 +91,7 @@ export const ProjectSection = () => {
                   <button
                     className="inline-block border-e p-3 text-gray-700 hover:bg-gray-50 focus:relative"
                     title="Edit Product"
+                    onClick={() => handleEditClick(item.id)}
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -69,6 +112,7 @@ export const ProjectSection = () => {
                   <button
                     className="inline-block p-3 text-gray-700 hover:bg-gray-50 focus:relative"
                     title="Delete Product"
+                    onClick={() => handleDelete(item.id)}
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -89,6 +133,15 @@ export const ProjectSection = () => {
             </div>
           </div>
         ))}
+        {showModal && (
+        <div className="modal">
+          <div className="modal-content">
+            <h3>Modification</h3>
+            <ProjectsUpdateForm refreshData={refreshData} projectData={selectedProject} />
+            <button onClick={() => setShowModal(false)}>Fermer</button>
+          </div>
+        </div>
+      )}
       </div>
     </section>
   )

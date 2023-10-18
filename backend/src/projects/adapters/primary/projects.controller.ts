@@ -40,9 +40,14 @@ export class ProjectController{
 
 
     @Put(':id')
-    @UseGuards(AuthGuard)
     async updateProject(@Param('id') id: string, @Body() updateDto: ProjectDto): Promise<void> {
-        await this.projectsService.updateProject(id, updateDto)
+        try {
+            const updatedProjects = await this.projectsService.updateProject(id, updateDto)
+            updatedProjects;
+        } catch (error) {
+            throw new BadRequestException("Erreur lors de la modification");
+        }
+        
     }
 
     @Delete(':id')

@@ -28,9 +28,9 @@ export class InMemoryProjects implements IProjectsRepository {
 
     async deleteProject(id: string): Promise<void> {
         const index = this.projects.findIndex(p => p.id === id);
-
+    
         if(index !== -1) {
-            this.projects.slice(index, 1);
+            this.projects.splice(index, 1);
         }
-    }
+    }    
 }

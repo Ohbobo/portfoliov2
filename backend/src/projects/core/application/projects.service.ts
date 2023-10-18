@@ -24,14 +24,19 @@ export class ProjectsService {
     }
 
     async updateProject(id: string, updateProjectDto: ProjectDto): Promise<IProjectCard> {
-        const findProjectById = await this.projectsRepository.findById(id);
-        if(!findProjectById){
+        try {
+          const findProjectById = await this.projectsRepository.findById(id);
+          if (!findProjectById) {
             throw new Error('Projet introuvable');
+          }
+      
+          const updatedProject = { ...findProjectById, ...updateProjectDto };
+          await this.projectsRepository.updateProject(updatedProject);
+          return updatedProject;
+        } catch (error) {
+          throw new Error("Une erreur s'est produite lors de la mise à jour du projet : " + error.message);
         }
-
-        const updatedProject = { ...findProjectById, ...updateProjectDto };
-        return updatedProject;
-    }
+      }
 
     async deleteProject(id: string): Promise<void> {
         const findProjectById = await this.projectsRepository.findById(id);

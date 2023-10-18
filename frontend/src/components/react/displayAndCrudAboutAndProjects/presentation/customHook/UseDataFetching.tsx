@@ -24,11 +24,13 @@ export function UseDataFetching<T>(url: string): {
       setLoading(false);
     }
   };
+
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [url]);
 
   const refreshData = () => {
+    console.log("Refresh data function called");
     fetchData();
   }
 
