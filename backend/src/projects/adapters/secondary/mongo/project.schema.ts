@@ -7,6 +7,9 @@ export class ProjectEntities {
 
     @Prop({required: true})
     description: string;
+    
+    @Prop({required: true})
+    link: string
 
     @Prop([{ 
         _id: false,

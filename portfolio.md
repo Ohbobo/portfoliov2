@@ -30,3 +30,12 @@ Section contact :
     possibilité de lecture
     réponse
     suppression
+
+
+gap sur card en mobile + fix border sur card en tablet , bg blanc sur tout le contact
+modif sur about
+mail
+reduire police description projets
+ouverture menu en mobile 
+mettre texte title a gauche en mobile 
+hover sur project quand sourie sur link

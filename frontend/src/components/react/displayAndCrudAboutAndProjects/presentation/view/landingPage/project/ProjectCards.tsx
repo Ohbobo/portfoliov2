@@ -17,9 +17,9 @@ export default function ProjectCards() {
       }
 
   return (
-    <div className='flex gap-4 sm:flex-col sm:items-center'>
+    <div className='flex flex-col p-5 md:flex-row gap-2'>
         {data?.map(card => (
-            <ProjectCard key={card._id} title={card.title} description={card.description} tags={card.tags}/>
+            <ProjectCard key={card._id} title={card.title} description={card.description} tags={card.tags} link={card.link}/>
         ))}
     </div>
   )
