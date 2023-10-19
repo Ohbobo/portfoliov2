@@ -11,12 +11,12 @@ interface Props  {
 const AboutCard = ({ title, technologies }: Props) => {
 
     return(
-        <article className="w-1/4 block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+        <article className="w-full block p-6 bg-gray-700 rounded-lg hover:bg-gray-800 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
             <h3 className="bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 bg-clip-text text-3xl font-extrabold text-transparent sm:text-1xl">{title}</h3>
-            <ul>
+            <ul className='flex flex-col gap-1'>
                 {technologies.map((el) => (
-                    <li key={el.id} className="flex items-center gap-1 mt-1 font-normal text-gray-700 dark:text-gray-400">
-                        <Icon icon={el.icon} />
+                    <li key={el.id} className="flex items-center gap-1 mt-1 font-semibold text-gray-300 dark:text-gray-400">
+                        <Icon icon={el.icon} className='text-2xl'/>
                         {el.name}
                     </li>
                 ))}

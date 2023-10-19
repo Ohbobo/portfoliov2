@@ -5,6 +5,9 @@ export class ProjectEntities {
     @Prop({required: true})
     title: string;
 
+    @Prop({required: true})
+    description: string;
+
     @Prop([{ 
         _id: false,
         id: { type: String, required: true },

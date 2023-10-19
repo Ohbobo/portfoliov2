@@ -50,33 +50,50 @@ export const AboutForm = ({ refreshData }: { refreshData: () => void }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className='max-w-xl mx-auto p-6 border rounded-lg'>
       <div>
-        <label>Titre:</label>
-        <input type="text" value={title} onChange={e => setTitle(e.target.value)} required />
+        <input 
+        className='block w-full px-4 py-2 mb-4 border rounded-md' 
+        type="text" 
+        value={title} 
+        placeholder="Titre"
+        onChange={e => setTitle(e.target.value)} required />
       </div>
       {technologies.map((tech, index) => (
         <div key={index}>
-          <label>Nom de la technologie:</label>
           <input
+            className='block w-full px-4 py-2 mb-4 border rounded-md'
             type="text"
             value={tech.name}
+            placeholder='Nom de la technologie'
             onChange={e => handleTechNameChange(index, e.target.value)}
             required
           />
-          <label>Icône de la technologie:</label>
+          <div className='flex gap-2'>
           <input
             type="text"
+            placeholder='icone de la technologie'
+            className='block w-full px-4 py-2 mb-4 border rounded-md'
             value={tech.icon}
             onChange={e => handleTechIconChange(index, e.target.value)}
             required
           />
+          <button 
+          type="button" 
+          onClick={handleAddTechnology}
+          className="inline-block rounded border border-indigo-600 bg-indigo-600 px-4 mb-4 text-sm font-medium text-white hover:bg-transparent hover:text-indigo-600 focus:outline-none focus:ring active:text-indigo-500"
+          >
+            +
+          </button>
+          </div>
         </div>
       ))}
-      <button type="button" onClick={handleAddTechnology}>
-        Ajouter une technologie
+      <button 
+      type="submit"
+      className="inline-block rounded border border-indigo-600 px-12 py-3 text-sm font-medium text-indigo-600 hover:bg-indigo-600 hover:text-white focus:outline-none focus:ring active:bg-indigo-500"
+      >
+        Ajouter un skill
       </button>
-      <button type="submit">Ajouter</button>
     </form>
   );
 };

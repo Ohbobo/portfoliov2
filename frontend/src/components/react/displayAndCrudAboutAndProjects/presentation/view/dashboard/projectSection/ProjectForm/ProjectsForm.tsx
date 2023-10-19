@@ -11,6 +11,7 @@ interface Tag {
 export const ProjectsForm = ({ refreshData }: {refreshData: () => void}) => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
+  const [link, setLink] = useState('');
   const [tags, setTags] = useState<string[]>(['']);
 
   const token = sessionStorage.getItem('token');
@@ -26,6 +27,7 @@ export const ProjectsForm = ({ refreshData }: {refreshData: () => void}) => {
       title: title,
       tags: newTags,
       description: description,
+      link: link,
     };
 
     try {
@@ -61,6 +63,14 @@ export const ProjectsForm = ({ refreshData }: {refreshData: () => void}) => {
         className="block w-full px-4 py-2 mb-4 border rounded-md"
         required
       />
+      <input
+        type="text"
+        value={link}
+        onChange={(e) => setLink(e.target.value)}
+        placeholder="Lien du projet"
+        className="block w-full px-4 py-2 mb-4 border rounded-md"
+        required
+      />
       <textarea
         value={description}
         onChange={(e) => setDescription(e.target.value)}
@@ -90,7 +100,7 @@ export const ProjectsForm = ({ refreshData }: {refreshData: () => void}) => {
         type="submit"
         className="inline-block rounded border border-indigo-600 px-12 py-3 text-sm font-medium text-indigo-600 hover:bg-indigo-600 hover:text-white focus:outline-none focus:ring active:bg-indigo-500"
       >
-        Ajouter
+        Ajouter un projet
       </button>
     </form>
   );

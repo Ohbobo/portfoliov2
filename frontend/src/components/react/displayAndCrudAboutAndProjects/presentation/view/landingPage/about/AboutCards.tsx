@@ -16,10 +16,11 @@ export default function AboutCards() {
   }
 
   return (
-    <div className='flex gap-2'>
-      {data?.map(card => (
-        <AboutCard key={card._id} title={card.title} technologies={card.technologies}/>
+    <div className="flex flex-col p-5 md:flex-row gap-2">
+      {data?.map((card) => (
+        <AboutCard key={card._id} title={card.title} technologies={card.technologies} />
       ))}
     </div>
-  )
+  );
+  
 }

@@ -4,9 +4,27 @@ import { Button } from '../ui/Button';
 import { UseDataFetching } from '../../../customHook/UseDataFetching';
 import type { IAbout } from '../../../../domain/models/interface';
 import { Icon } from '@iconify/react/dist/iconify.js';
+import { ApiService } from '../../../../data/ApiServices';
 export const AboutSection = () => {
   const { data, loading, error, refreshData } = UseDataFetching<IAbout[]>(API_ROUTES.GET_ABOUT)
   
+  const apiService = new ApiService<IAbout>();
+
+  const handleDelete = async (id: string | undefined) => {
+    const token = sessionStorage.getItem('token');
+
+    if (id && token) {
+      try {
+        await apiService.delete(`${API_ROUTES.GET_ABOUT}/${id}`, token);
+        refreshData();
+      } catch (error) {
+        console.error("Une erreur s'est produite lors de la suppression :", error);
+      }
+    } else {
+      console.error("L'ID du projet est indéfini ou le jeton d'authentification est manquant.");
+    }
+  }
+
   if (loading) {
     return (
       <section>
@@ -33,14 +51,14 @@ export const AboutSection = () => {
         <Button text='Ajouter un skill' refreshData={refreshData}/>
       </div>
       <p>Liste des icons: <a href="https://icones.js.org/">Ici</a></p>
-      <div>
+      <div className='flex gap-2'>
       {data?.map(item => (
           <div key={item._id} className="w-2/6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
             <div className="p-5">
                 <h3 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{item.title}</h3>
                 <ul>
                   {item.technologies.map(el => (
-                    <li key={el.id}>
+                    <li key={el.id} className="flex items-center gap-1">
                       <Icon icon={el.icon} />
                       {el.name}
                     </li>
@@ -70,6 +88,7 @@ export const AboutSection = () => {
                   <button
                     className="inline-block p-3 text-gray-700 hover:bg-gray-50 focus:relative"
                     title="Delete Product"
+                    onClick={() => handleDelete(item._id)}
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
