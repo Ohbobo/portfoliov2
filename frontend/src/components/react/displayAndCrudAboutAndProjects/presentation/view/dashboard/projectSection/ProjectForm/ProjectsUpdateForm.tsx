@@ -14,6 +14,7 @@ export const ProjectsUpdateForm = ({ refreshData, projectData }: {
 }) => {
     const [title, setTitle] = useState(projectData?.title || '');
     const [description, setDescription] = useState(projectData?.description || '');
+    const [link, setLink] = useState(projectData?.link || '')
     const [tags, setTags] = useState<string[]>(
       projectData?.tags.map((tag) => tag.name) || ['']
     );
@@ -32,12 +33,13 @@ export const ProjectsUpdateForm = ({ refreshData, projectData }: {
         title: title,
         tags: newTags,
         description: description,
+        link: link,
       };
   
       try {
         if (token) {
           const updatedData = await apiService.update(
-            `${API_ROUTES.GET_PROJECTS}/${projectData?.id}`,
+            `${API_ROUTES.GET_PROJECTS}/${projectData?._id}`,
             token,
             updatedProject,
           );
@@ -62,48 +64,55 @@ export const ProjectsUpdateForm = ({ refreshData, projectData }: {
     };
   
     return (
-      <form
-        onSubmit={handleSubmit}
-        className="max-w-xl mx-auto p-6 border rounded-lg"
-      >
-        <input
-          type="text"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          placeholder="Titre"
-          className="block w-full px-4 py-2 mb-4 border rounded-md"
-        />
-        <textarea
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-          placeholder="Description"
-          className="block w-full px-4 py-2 mb-4 border rounded-md"
-        ></textarea>
-        {tags.map((tag, index) => (
-          <div key={index} className="flex gap-2">
-            <input
-              type="text"
-              value={tag}
-              onChange={(e) => handleTagChange(index, e.target.value)}
-              placeholder="Tag"
-              className="block w-full px-4 py-2 mb-4 border rounded-md"
-            />
-            <button
-              type="button"
-              onClick={handleAddTag}
-              className="inline-block rounded border border-indigo-600 bg-indigo-600 px-4 mb-4 text-sm font-medium text-white hover:bg-transparent hover:text-indigo-600 focus:outline-none focus:ring active:text-indigo-500"
-            >
-              +
-            </button>
-          </div>
-        ))}
-  
-        <button
-          type="submit"
-          className="inline-block rounded border border-indigo-600 px-12 py-3 text-sm font-medium text-indigo-600 hover:bg-indigo-600 hover:text-white focus:outline-none focus:ring active:bg-indigo-500"
+        <form
+          onSubmit={handleSubmit}
+          className="max-w-xl mx-auto p-6 border rounded-lg bg-white"
         >
-          Modifier
-        </button>
-      </form>
+          <input
+              type="text"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              placeholder="Titre"
+              className="block w-full px-4 py-2 mb-4 border rounded-md"
+          />
+          <input
+              type="text"
+              value={link}
+              onChange={(e) => setLink(e.target.value)}
+              placeholder="Titre"
+              className="block w-full px-4 py-2 mb-4 border rounded-md"
+          />
+          <textarea
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            placeholder="Description"
+            className="block w-full px-4 py-2 mb-4 border rounded-md"
+          ></textarea>
+          {tags.map((tag, index) => (
+            <div key={index} className="flex gap-2">
+              <input
+                type="text"
+                value={tag}
+                onChange={(e) => handleTagChange(index, e.target.value)}
+                placeholder="Tag"
+                className="block w-full px-4 py-2 mb-4 border rounded-md"
+              />
+              <button
+                type="button"
+                onClick={handleAddTag}
+                className="inline-block rounded border border-indigo-600 bg-indigo-600 px-4 mb-4 text-sm font-medium text-white hover:bg-transparent hover:text-indigo-600 focus:outline-none focus:ring active:text-indigo-500"
+              >
+                +
+              </button>
+            </div>
+          ))}
+    
+          <button
+            type="submit"
+            className="inline-block rounded border border-indigo-600 px-12 py-3 text-sm font-medium text-indigo-600 hover:bg-indigo-600 hover:text-white focus:outline-none focus:ring active:bg-indigo-500"
+          >
+            Modifier
+          </button>
+        </form>
     );
 }

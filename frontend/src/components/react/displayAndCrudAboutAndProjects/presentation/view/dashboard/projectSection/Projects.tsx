@@ -70,17 +70,18 @@ export const ProjectSection = () => {
   }
 
   return (
-    <section>
+    <section className='mx-3 mt-6'>
       <div className="flex items-center justify-between">
         <h2 className='font-bold text-2xl text-gray-700'>Mes projets</h2>
         <Button text='Ajouter un projet' refreshData={refreshData} />
       </div>
 
-      <div className='flex justify-between items-center gap-4'>
+      <div className='flex flex-col lg:flex-row justify-between items-center gap-4'>
         {data?.map(item => (
-          <div key={item._id} className="w-2/6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+          <div key={item._id} className="w-full lg:w-2/6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
             <div className="p-5">
                 <h3 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{item.title}</h3>
+                <a href={item.link}></a>
                 <p className='my-2'>{item.description}</p>
                 <div className='flex gap-2'>
                   {item.tags.map(tag => (
@@ -134,14 +135,19 @@ export const ProjectSection = () => {
           </div>
         ))}
         {showModal && (
-        <div className="modal">
-          <div className="modal-content">
-            <h3>Modification</h3>
+          <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-gray-800 bg-opacity-50">
+          <div className="bg-white p-6 rounded-lg">
+            <h3 className="text-2xl font-bold mb-4">Modification</h3>
             <ProjectsUpdateForm refreshData={refreshData} projectData={selectedProject} />
-            <button onClick={() => setShowModal(false)}>Fermer</button>
+            <button
+            className="inline-block rounded border border-indigo-600 bg-white px-12 py-3 text-sm font-medium text-indigo-600 hover:bg-indigo-600 hover:text-white focus:outline-none focus:ring active:bg-indigo-500 mt-4"
+            onClick={() => setShowModal(false)}
+            >
+            Fermer
+            </button>
           </div>
-        </div>
-      )}
+          </div>
+          )}
       </div>
     </section>
   )

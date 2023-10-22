@@ -45,15 +45,15 @@ export const AboutSection = () => {
   }
 
   return (
-    <section>
+    <section className='mx-3'>
       <div className="flex items-center justify-between">
         <h2 className='font-bold text-2xl text-gray-700'>Mes skills</h2>
         <Button text='Ajouter un skill' refreshData={refreshData}/>
       </div>
-      <p>Liste des icons: <a href="https://icones.js.org/">Ici</a></p>
-      <div className='flex gap-2'>
+      <p className='mb-3'>Liste des icons: <a href="https://icones.js.org/">Ici</a></p>
+      <div className='flex flex-col w-full items-center gap-2 lg:flex-row'>
       {data?.map(item => (
-          <div key={item._id} className="w-2/6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+          <div key={item._id} className="w-full lg:w-2/6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
             <div className="p-5">
                 <h3 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{item.title}</h3>
                 <ul>

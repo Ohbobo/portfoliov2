@@ -34,7 +34,7 @@ export const DashboardTest = () => {
         <Navigation />
         <AboutSection />
         <ProjectSection />
-        <button onClick={handleLogout}>Deconnexion</button>
+        <button className="bg-teal-600 hover:bg-teal-700 text-white font-medium py-2 px-4 rounded mt-9 m-3" onClick={handleLogout}>Deconnexion</button>
     </div>
     
   )
