@@ -15,17 +15,17 @@ export default function ProjectCard({ title, description, tags , link }: Props) 
 
   return (
     <article className="w-full hover:animate-background rounded-xl bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 p-0.5 shadow-xl transition hover:bg-[length:400%_400%] hover:shadow-sm hover:[animation-duration:_4s]">
-      <div className="bg-gray-700 rounded-lg hover:bg-gray-800 p-4 !pt-10 sm:p-6">
+      <div className="bg-gray-700 flex flex-col justify-between h-64 rounded-lg hover:bg-gray-800 p-4 !pt-10 sm:p-6">
         <div className='flex items-center justify-between'>
           <h3 className="mt-0.5 text-2xl font-medium text-gray-300">
               {title}
           </h3>
-          <a href={link} className='flex gap-1 text-gray-300 items-center cursor-pointer'>
+          <a href={link} className='flex gap-1 text-gray-300 items-center cursor-pointer hover:underline'>
            Voir le projet
             <Icon icon="mdi:link-variant" className='text-xl text-gray-300' />
           </a>
         </div>
-          <h4 className="mt-3 text-lg font-medium text-gray-400">
+          <h4 className="mt-3 text-base font-base text-gray-400">
               {description}
           </h4>
         <div className="mt-4 flex flex-wrap gap-1">

@@ -1,20 +1,51 @@
 import React from 'react'
+import { useState } from 'react'
+import { CardContact } from './cardContact';
 
 export const ContactForm = () => {
+
+    const [formData, setFormData] = useState({
+        name: "",
+        email: "",
+        phone: "",
+        message: "",
+    });
+
+    const handleChange = (e: { target: { id: any; value: any; }; }) => {
+        setFormData({ ...formData, [e.target.id]: e.target.value });
+    };
+
+    
+  const handleSubmit = (e: { preventDefault: () => void; }) => {
+    e.preventDefault();
+
+    fetch(`http://localhost:3000/mail/send?email=${formData.email}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        message: formData.message,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => console.log(data))
+      .catch((error) => console.error("Error:", error));
+  };
+
   return (
     <section className="bg-gray-100 rounded-lg">
         <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 gap-x-16 gap-y-8 lg:grid-cols-5">
-            <div className="lg:col-span-2 lg:py-12">
-                <p className="max-w-xl text-lg">
-                At the same time, the fact that we are wholly owned and totally
-                independent from manufacturer and other group control gives you
-                confidence that we will only recommend what is right for you.
-                </p>
+            <div className="lg:col-span-2 lg:py-12 flex flex-col justify-center">
+                <CardContact />
             </div>
 
             <div className="rounded-lg bg-white p-8 shadow-lg lg:col-span-3 lg:p-12">
-                <form action="" className="space-y-4">
+                <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
                     <label className="sr-only" htmlFor="name">Name</label>
                     <input
@@ -22,6 +53,8 @@ export const ContactForm = () => {
                     placeholder="Nom / prénom"
                     type="text"
                     id="name"
+                    name='name'
+                    onChange={handleChange}
                     />
                 </div>
 
@@ -33,6 +66,8 @@ export const ContactForm = () => {
                         placeholder="Adresse email"
                         type="email"
                         id="email"
+                        name='email'
+                        onChange={handleChange}
                     />
                     </div>
 
@@ -43,6 +78,8 @@ export const ContactForm = () => {
                         placeholder="Téléphone"
                         type="tel"
                         id="phone"
+                        name='phone'
+                        onChange={handleChange}
                     />
                     </div>
                 </div>
@@ -55,6 +92,8 @@ export const ContactForm = () => {
                     placeholder="Message"
                     rows={8}
                     id="message"
+                    name='message'
+                    onChange={handleChange}
                     ></textarea>
                 </div>
 
