@@ -83,6 +83,7 @@ export const ContactForm = () => {
                         name='name'
                         onChange={handleChange}
                         value={formData.name}
+                        required
                         />
                     </div>
 
@@ -97,6 +98,7 @@ export const ContactForm = () => {
                             name='email'
                             onChange={handleChange}
                             value={formData.email}
+                            required
                         />
                         </div>
 
@@ -110,6 +112,7 @@ export const ContactForm = () => {
                             name='phone'
                             value={formData.phone}
                             onChange={handleChange}
+                            required
                         />
                         </div>
                     </div>
@@ -125,6 +128,7 @@ export const ContactForm = () => {
                         name='message'
                         value={formData.message}
                         onChange={handleChange}
+                        required
                         ></textarea>
                     </div>
 
