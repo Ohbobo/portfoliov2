@@ -15,9 +15,8 @@ export const ContactForm = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [isSent, setIsSent] = useState(false);
     const [showMessage, setShowMessage] = useState(false);
-
     useEffect(() => {
-        let timer: NodeJS.Timer;
+        let timer: string | number | NodeJS.Timeout | undefined
         if (isSent) {
             setShowMessage(true);
             timer = setTimeout(() => {
