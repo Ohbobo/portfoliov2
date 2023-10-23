@@ -3,9 +3,8 @@ import LoginLayout from "../layout/loginLayout.astro";
 import AdminForm from "../components/react/admin/presentation/AdminForm";
 ---
 
-<LoginLayout>
+<LoginLayout title="Accès utilisateur">
     <main class="w-full h-full flex justify-center items-center">
         <AdminForm client:only/>
     </main>
 </LoginLayout>
-
