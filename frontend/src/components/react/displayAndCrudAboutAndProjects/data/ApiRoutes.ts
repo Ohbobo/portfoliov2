@@ -1,4 +1,4 @@
-const API_URL = "https://wicked-crow-button.cyclic.app"
+export const API_URL = "https://wicked-crow-button.cyclic.app"
 
 export const API_ROUTES =  {
     GET_ABOUT: `${API_URL}/about`,

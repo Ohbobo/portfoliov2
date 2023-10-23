@@ -1,4 +1,4 @@
-import { API_ROUTES } from "../../displayAndCrudAboutAndProjects/data/ApiRoutes";
+import { API_URL } from "../../displayAndCrudAboutAndProjects/data/ApiRoutes";
 
 interface ContactFormData {
     name: string;
@@ -10,7 +10,7 @@ interface ContactFormData {
 export class ContactApiService {
     async sendMail(formData: ContactFormData) {
         try {
-            const response = await fetch(`${API_ROUTES}/mail/send?email=${formData.email}`, {
+            const response = await fetch(`${API_URL}/mail/send?email=${formData.email}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
