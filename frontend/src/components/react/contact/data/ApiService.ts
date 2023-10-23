@@ -12,7 +12,7 @@ export class ContactApiService {
         try {
             const response = await fetch(`${API_URL}/mail/send?email=${formData.email}`, {
             method: 'POST',
-            mode:'no-cors',
+            mode:'cors',
             body: JSON.stringify(formData),
             });
 
