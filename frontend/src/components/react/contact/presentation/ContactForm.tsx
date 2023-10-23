@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import { CardContact } from './CardContact';
-import { ContactApiService } from '../data/ApiService';
+import { API_URL } from '../../displayAndCrudAboutAndProjects/data/ApiRoutes';
 
 export const ContactForm = () => {
 
@@ -45,20 +45,37 @@ export const ContactForm = () => {
     const handleSubmit = async (e: { preventDefault: () => void; }) => {
         e.preventDefault();
         setIsLoading(true);
-
-        const contactApiService = new ContactApiService();
-
         try {
-            const data = await contactApiService.sendMail(formData);
-            setIsSent(true);
-            setIsLoading(false);
-            resetForm();
+            const response = await fetch(`http://localhost:3000/mail/send?email=${formData.email}`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    name: formData.name,
+                    email: formData.email,
+                    phone: formData.phone,
+                    message: formData.message,
+                }),
+            });
+        
+            if (response.status === 201) {
+
+                setIsSent(true);
+                setShowMessage(true);
+                setIsLoading(false);
+                resetForm(); 
+                setTimeout(() => {
+                    setShowMessage(false);
+                }, 5000);
+            } else {
+                console.log('Unexpected status code:', response.status);
+            }
         } catch (error) {
-            console.error('Error:', error);
+            console.error("Error:", error);
             setIsLoading(false);
         }
     };
-
     return (
         <section className="bg-gray-100 rounded-lg">
             <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">

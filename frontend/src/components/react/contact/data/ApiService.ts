@@ -10,9 +10,12 @@ interface ContactFormData {
 export class ContactApiService {
     async sendMail(formData: ContactFormData) {
         try {
-            const response = await fetch(`${API_URL}/mail/send?email=${formData.email}`, {
+            const response = await fetch(`http://localhost:3000/mail/send?email=${formData.email}`, {
             method: 'POST',
-            mode:'cors',
+            headers: {
+                "Content-Type": "application/json",
+              },
+            mode:'no-cors',
             body: JSON.stringify(formData),
             });
 

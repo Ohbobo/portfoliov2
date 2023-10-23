@@ -34,9 +34,7 @@ Section contact :
 
 modif sur about
 hover sur project quand sourie sur link
-SEO + FAVICON
 REFACTO REACT
 NAVBAR FIXED
-MAIL_KEY=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
 ajouter dotenv sur front pour const url du front
 
