@@ -12,6 +12,8 @@ export const ProjectsForm = ({ refreshData }: {refreshData: () => void}) => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [link, setLink] = useState('');
+  const [issue, setIssue] = useState('');
+  const [resolution, setResolution] = useState('');
   const [tags, setTags] = useState<string[]>(['']);
 
   const token = sessionStorage.getItem('token');
@@ -28,6 +30,8 @@ export const ProjectsForm = ({ refreshData }: {refreshData: () => void}) => {
       tags: newTags,
       description: description,
       link: link,
+      issue: issue,
+      resolution: resolution,
     };
 
     try {
@@ -77,6 +81,22 @@ export const ProjectsForm = ({ refreshData }: {refreshData: () => void}) => {
         placeholder="Description"
         className="block w-full px-4 py-2 mb-4 border rounded-md"
       ></textarea>
+        <input
+        type="text"
+        value={issue}
+        onChange={(e) => setIssue(e.target.value)}
+        placeholder="Problématiques"
+        className="block w-full px-4 py-2 mb-4 border rounded-md"
+        required
+      />
+      <input
+        type="text"
+        value={resolution}
+        onChange={(e) => setResolution(e.target.value)}
+        placeholder="Résolution"
+        className="block w-full px-4 py-2 mb-4 border rounded-md"
+        required
+      />
       {tags.map((tag, index) => (
         <div key={index} className='flex gap-2'>
           <input

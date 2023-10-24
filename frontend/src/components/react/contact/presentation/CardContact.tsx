@@ -2,7 +2,19 @@ import React from 'react'
 
 export const CardContact = () => {
   return (
-    <div className="flex items-center p-3 bg-white rounded-md shadow-lg">
+    
+    <div className="flex items-center p-3 bg-white rounded-md shadow-lg relative">
+      <div className="flex p-2 gap-1 absolute top-0 left-1">
+        <div className="">
+          <span className="bg-blue-500 inline-block center w-3 h-3 rounded-full"></span>
+        </div>
+        <div className="circle">
+          <span className="bg-purple-500 inline-block center w-3 h-3 rounded-full"></span>
+        </div>
+        <div className="circle">
+          <span className="bg-pink-500 box inline-block center w-3 h-3 rounded-full"></span>
+        </div>
+      </div>
   <section className="flex justify-center items-center w-14 h-14 rounded-full shadow-md bg-gradient-to-r from-[#F9C97C] to-[#A2E9C1] hover:from-[#C9A9E9] hover:to-[#7EE7FC] hover:cursor-pointer hover:scale-110 duration-300">
     <img src="/photo_de_profil.JPG" alt="photo de profil" className='object-cover flex justify-center items-center w-14 h-14 rounded-full shadow-md' />
   </section>
@@ -12,6 +24,7 @@ export const CardContact = () => {
       <h3 className="text-gray-600 font-semibold text-sm">Théo Agen</h3>
       <h3 className="bg-clip-text text-transparent bg-gradient-to-l from-[#005BC4] to-[#27272A] text-lg font-bold">Developpeur web</h3>
       <div className='flex flex-col gap-1'>
+        <p className='text-gray-600 font-semibold text-sm'>Formation Developpeur web chez openclassroom</p>
         <p className='text-gray-600 font-semibold text-sm'>agentheo0@gmail.com</p>
         <p className='text-gray-600 text-sm'>0632393340</p>
       </div>

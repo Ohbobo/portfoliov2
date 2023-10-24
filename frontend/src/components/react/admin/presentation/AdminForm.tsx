@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState } from 'react';
+import { API_URL } from '../../displayAndCrudAboutAndProjects/data/ApiRoutes';
 
 
 export default function AdminForm() {
@@ -9,7 +10,7 @@ export default function AdminForm() {
     const handleSubmit = async (e: { preventDefault: () => void; }) => {
         e.preventDefault();
         try {
-            const response = await fetch("http://localhost:3000/admin/login", {
+            const response = await fetch(`${API_URL}/admin/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

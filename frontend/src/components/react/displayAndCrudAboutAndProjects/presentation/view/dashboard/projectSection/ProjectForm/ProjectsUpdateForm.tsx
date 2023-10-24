@@ -15,6 +15,8 @@ export const ProjectsUpdateForm = ({ refreshData, projectData }: {
     const [title, setTitle] = useState(projectData?.title || '');
     const [description, setDescription] = useState(projectData?.description || '');
     const [link, setLink] = useState(projectData?.link || '')
+    const [issue, setIssue] = useState(projectData?.issue || '');
+    const [resolution, setResolution] = useState(projectData?.resolution || '');
     const [tags, setTags] = useState<string[]>(
       projectData?.tags.map((tag) => tag.name) || ['']
     );
@@ -33,6 +35,8 @@ export const ProjectsUpdateForm = ({ refreshData, projectData }: {
         title: title,
         tags: newTags,
         description: description,
+        issue: issue,
+        resolution: resolution,
         link: link,
       };
   
@@ -88,6 +92,20 @@ export const ProjectsUpdateForm = ({ refreshData, projectData }: {
             placeholder="Description"
             className="block w-full px-4 py-2 mb-4 border rounded-md"
           ></textarea>
+          <input
+              type="text"
+              value={issue}
+              onChange={(e) => setIssue(e.target.value)}
+              placeholder="Problématiques"
+              className="block w-full px-4 py-2 mb-4 border rounded-md"
+          />
+          <input
+              type="text"
+              value={resolution}
+              onChange={(e) => setResolution(e.target.value)}
+              placeholder="Résolution"
+              className="block w-full px-4 py-2 mb-4 border rounded-md"
+          />
           {tags.map((tag, index) => (
             <div key={index} className="flex gap-2">
               <input

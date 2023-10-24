@@ -22,7 +22,6 @@ export const ProjectSection = () => {
       try {
         const response = await fetch(`${API_ROUTES.GET_PROJECTS}/${id}`);
         const projectData = await response.json();
-        console.log(projectData);
         setSelectedProject(projectData)
         setShowModal(true);
         refreshData();
@@ -83,6 +82,14 @@ export const ProjectSection = () => {
                 <h3 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{item.title}</h3>
                 <a href={item.link}></a>
                 <p className='my-2'>{item.description}</p>
+                <div className='flex gap-1 flex-col'>
+                  <p className="underline">Problématiques:</p>
+                  <p>{item.issue}</p>
+                </div>
+                <div className='flex gap-1 flex-col'>
+                  <p className="underline">Resolution: </p>
+                  <p>{item.resolution}</p>
+                </div>
                 <div className='flex gap-2'>
                   {item.tags.map(tag => (
                     <Tag key={tag.id} tag={tag.name} />
