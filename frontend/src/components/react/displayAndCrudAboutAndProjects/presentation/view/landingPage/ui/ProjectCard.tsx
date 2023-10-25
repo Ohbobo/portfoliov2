@@ -31,11 +31,11 @@ export default function ProjectCard({ title, description, tags , link, issue, re
               {description}
           </h4>
           <div className='flex gap-1 flex-wrap mt-2 flex-col'>
-            <p className='text-gray-300 underline'>Problématiques:</p>
+            <p className='text-gray-300 font-semibold'>Problématiques:</p>
             <p className='text-gray-300'>{issue}</p>
           </div>
           <div className='flex gap-1 flex-wrap mt-2'>
-            <p className='text-gray-300 underline'>Résolution:</p>
+            <p className='text-gray-300 font-semibold'>Résolution:</p>
             <p className='text-gray-300'>{resolution}</p>
           </div>
         <div className="mt-4 flex flex-wrap gap-1">

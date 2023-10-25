@@ -1,4 +1,4 @@
-export const API_URL = "https://wicked-crow-button.cyclic.app"
+export const API_URL = import.meta.env.PUBLIC_API_URL
 
 export const API_ROUTES =  {
     GET_ABOUT: `${API_URL}/about`,
